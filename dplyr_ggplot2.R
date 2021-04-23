@@ -100,6 +100,7 @@ iris_data %>%
 iris_data %>% 
   mutate(Petal_area = Petal_Length*Petal_Width)
 
+set.seed(17) #ustawianie ziarna losowości
 
 colours <- sample(x = c("red", "blue", "yellow"),
                   prob = c(0.1, 0.6, 0.3), 
