@@ -59,7 +59,9 @@ iris_data %>% dim() # pipe przekazuje obiekt z lewej strony do funkcji z prawej
 
 ###### Pytanie: Co będzie wynikiem poniższego wywołania? 
 
-iris_data %>% dim() %>% sum()
+iris_data %>% 
+  dim() %>% 
+  sum()
 
 ######
 
@@ -67,7 +69,9 @@ iris_data %>% dim() %>% sum()
 ## Funkcja select(...)
 
 select(iris_data, Sepal_Length, Sepal_Width)
-iris_data %>% select(Sepal_Length, Sepal_Width) 
+
+iris_data %>% 
+  select(Sepal_Length, Sepal_Width) 
 
 all.equal(select(iris_data, Sepal_Length, Sepal_Width),
           iris_data %>% select(Sepal_Length, Sepal_Width)) # to samo
@@ -90,7 +94,9 @@ iris_data %>%
 ##############
 #### PYTANIE: Ile jest w ramce danych kwiatów mających szerokość płatka (Petal_Width) większą od 0.2 i mniejszą od 1?
 
-#???????
+iris_data %>% 
+  filter(Petal_Width > 0.2, Petal_Width < 1) %>% 
+  nrow()
 
 ##############
 
@@ -153,7 +159,9 @@ iris_colours %>%
 
 #### Pytanie: JAka jest średnia szerokość płatka (Petal_Width) dla yellow setosa?
 
-# ????
+iris_colours %>% 
+  group_by(Colours, Species) %>% 
+  summarise(mean_Petal_Width = mean(Petal_Width))
 
 ###############################################
 
@@ -177,6 +185,11 @@ colMeans(iris_colours) # błąd wywołania
 
 ## wykresy punktowe
 
+
+ggplot()
+
+ggplot(iris_colours, aes(x = Petal_Length, y = Petal_Width))
+
 ggplot(iris_colours, aes(x = Petal_Length, y = Petal_Width)) +
   geom_point()
 
@@ -189,7 +202,7 @@ ggplot(iris_colours, aes(x = Petal_Length, y = Petal_Width, col = Species)) +
 ggplot(iris_colours, aes(x = Petal_Length, y = Petal_Width, col = Species)) +
   geom_point() +
   ggtitle("Nice plot title here!") +  # dodanie tytułu
-  theme_minimal()  # zmiana stylu wykresu 
+  theme_bw()  # zmiana stylu wykresu 
 
 
 ## histogramy:
