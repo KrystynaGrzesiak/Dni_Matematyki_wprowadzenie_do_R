@@ -142,17 +142,20 @@ iris_colours %>%
   group_by(Colours) %>% 
   summarise(n = n())
 
-#### Pytanie: Ile jest obserwacji yellow setosa?
-
-# ????
-###############################################
-
 
 # agregacja
 
 iris_colours %>% 
   group_by(Species) %>% 
-  summarise(mean_Petal_Length = mean(Petal_Length))
+  filter(Sepal_Length >= 5) %>% 
+  summarise(sd_Petal_Length = sd(Petal_Length))
+
+
+#### Pytanie: JAka jest średnia szerokość płatka (Petal_Width) dla yellow setosa?
+
+# ????
+
+###############################################
 
 
 head(iris_colours)
@@ -176,6 +179,9 @@ colMeans(iris_colours) # błąd wywołania
 
 ggplot(iris_colours, aes(x = Petal_Length, y = Petal_Width)) +
   geom_point()
+
+ggplot() +
+  geom_point(iris_colours, mapping = aes(x = Petal_Length, y = Petal_Width))
 
 ggplot(iris_colours, aes(x = Petal_Length, y = Petal_Width, col = Species)) +
   geom_point()
