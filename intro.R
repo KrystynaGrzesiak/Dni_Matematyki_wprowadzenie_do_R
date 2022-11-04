@@ -4,7 +4,7 @@
 # 3. Jak korzystać z funkcji w R
 # 4. Dokumentacja
 # 5. Jak budować funkcje, pisać instrukcje warunkowe itd.
-
+#######################################################3
 
 ### Typy danych w R
 ## Typy atomowe - jednorodne wektory
